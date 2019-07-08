@@ -1,15 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"os"
 	"bufio"
-	"strings"
-	"log"
+	"fmt"
 	"github.com/disintegration/imaging"
+	"log"
+	"os"
+	"strings"
 )
 
-func main () {
+func main() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter image file location: ")
 	text, _ := reader.ReadString('\n')
@@ -19,15 +19,15 @@ func main () {
 	if err != nil {
 		log.Fatalf("failed to open image: %v", err)
 	}
-	new_img_resize := imaging.Resize(src, 500, 500, imaging.Lanczos)
+	newImgResize := imaging.Resize(src, 500, 500, imaging.Lanczos)
 
 	reader2 := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter file location for saving output: ")
 	out, _ := reader2.ReadString('\n')
 	out = strings.TrimSuffix(out, "\n")
-	full_out := out + "/square_image.jpg"
+	fullOut := out + "/square_image.jpg"
 
-	err = imaging.Save(new_img_resize, full_out)
+	err = imaging.Save(newImgResize, fullOut)
 	if err != nil {
 		log.Fatalf("Failed to save image: %v", err)
 	}
